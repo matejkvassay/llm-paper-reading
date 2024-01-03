@@ -1,3 +1,4 @@
+[Back to title page](README.md)
 # LLaMA: Open and Efficient Foundation Language Models
 ### Basic info
 **Link:** https://arxiv.org/abs/2302.13971
