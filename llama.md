@@ -1,5 +1,5 @@
 # LLaMA: Open and Efficient Foundation Language Models
-### Info sheet
+### Basic info
 **Link:** https://arxiv.org/abs/2302.13971
 
 **Submitted:** Feb 2023
