@@ -1,3 +1,4 @@
+[Back to title page](README.md)
 # Finetuned Language Models Are Zero-Shot Learners
 ### Basic info
 **Link:** https://arxiv.org/abs/2109.01652
@@ -33,3 +34,7 @@ Noteworthy result is study on multiple model sizes where instruction fine-tuning
 
 ### Conclusion
 This influential FLAN paper has proven hypothesis, that instruction fine-tuning is beneficial for 0-shot inference and laid solid basis for it’s wide-spread adaption we can observe today.
+
+--- 
+
+[Back to title page](README.md)

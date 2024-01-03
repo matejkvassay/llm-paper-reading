@@ -41,3 +41,7 @@ At the time of publication notable opponents of these models were PaLM (8B - 540
 
 ### Conclusion
 Original LLaMA models achieved nice results and mostly contributed by making these models and information on architecture, training techniques and data sources used public.  
+
+--- 
+
+[Back to title page](README.md)
