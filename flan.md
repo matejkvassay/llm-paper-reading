@@ -1,6 +1,6 @@
-# Fine-tuned models are zero-shot learners
+# Finetuned Language Models Are Zero-Shot Learners
 ### Basic info
-**Link:** https://arxiv.org/pdf/2109.01652.pdf
+**Link:** https://arxiv.org/abs/2109.01652
 
 **Submitted:** Sep 2021
 
