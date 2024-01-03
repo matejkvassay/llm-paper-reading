@@ -33,8 +33,7 @@ They have compared effect of instruction fine-tuning (IFT) with direct supervise
 Noteworthy result is study on multiple model sizes where instruction fine-tuning on model with 8B parameters or less actually decreased the performance on unseen 0-shot inference task. One suspected reason can be catastrophic forgetting caused by capacity of these smaller models being filled by the instruction tasks however it’s not evaluated.
 
 ### Conclusion
-This influential FLAN paper has proven hypothesis, that instruction fine-tuning is beneficial for 0-shot inference and laid solid basis for it’s wide-spread adaption we can observe today.
-
+Authors of this paper have successfully proven their hypothesis that instruction fine-tuning is beneficial for 0-shot inference. 
 --- 
 
 [Back to title page](README.md)
