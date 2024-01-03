@@ -2,9 +2,9 @@
 
 ### Paper summaries
 
-[LLaMA 1](llama.md)
+[FLAN](flan.md) (Sep 2021)
 
-[FLAN](flan.md)
+[LLaMA 1](llama.md) (Feb 2023)
 
 ### About
 This repository contains summaries of interesting research papers. 
