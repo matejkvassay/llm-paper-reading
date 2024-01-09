@@ -2,8 +2,6 @@
 
 ### Paper summaries
 
-[T5](t5.md) (Oct 2019)
-
 [FLAN](flan.md) (Sep 2021)
 
 [Chain of Thought](cot.md) (Jan 2022)
