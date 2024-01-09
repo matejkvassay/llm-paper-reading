@@ -6,7 +6,7 @@
 
 [FLAN](flan.md) (Sep 2021)
 
-[Chain of Thought prompting](cot.md) (Jan 2022)
+[Chain of Thought](cot.md) (Jan 2022)
 
 [LLaMA](llama.md) (Feb 2023)
 
