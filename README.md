@@ -2,6 +2,8 @@
 
 ### Paper summaries
 
+[T5](t5.md) (Oct 2019)
+
 [FLAN](flan.md) (Sep 2021)
 
 [LLaMA 1](llama.md) (Feb 2023)
