@@ -8,7 +8,7 @@
 **By:** Meta AI
 
 ### Introduction
-In this paper Meta AI introduced series of 7B - 65B parameter LLMs trained on open source datasets. Main focus of the improvements is on fast/inexpensive inference. Rather than increasing the model size in number of parameters researchers focused on improving performance by scaling up the dataset size while keeping the model reasonably small. 
+In this paper Meta AI introduced series of 7B - 65B parameter LLMs trained on open source datasets.
 
 ### Tradeoff between dataset and model size
 By recommendation from Chinchilla paper (https://arxiv.org/pdf/2203.15556.pdf) the optimal pre-training dataset sizes are:
@@ -19,8 +19,8 @@ LLaMA is using following number of tokens for pre-training:
 - ~1T tokens for 7B and 13B parameter models
 - ~1.4T for 33B and 65B parameter models
 
-The recommendation was followed for the 65B model but not for 7B and 13B. The intent was to create
-as good performing model as possible with reasonable inference costs, at expense of increased training budget.
+The Chinchilla recommendation was followed for the 65B model but not for 7B and 13B. 
+The intent was to create as good performing model as possible with reasonable inference costs, at expense of increased training budget.
 
 ### Training dataset
 Training dataset is mixture of openly available datasets:
