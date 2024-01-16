@@ -10,4 +10,4 @@
 
 ### About
 This repository contains summaries of interesting LLM-related research papers. 
-The summaries are written as part of my continuous education in NLP. 
+The summaries are written as part of my continuous education in NLP.
