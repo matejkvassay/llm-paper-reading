@@ -8,15 +8,22 @@
 **By:** Meta AI
 
 ### Introduction
-In LLaMA paper Meta AI brought series of 7B - 65B parameter LLMs trained on open source datasets. Main focus of the improvements is on fast/inexpensive inference. Therefore rather than increasing the model size in number of parameters researchers focused on improving performance by scaling up the dataset size while keeping the model reasonably small. 
+In this paper Meta AI introduced series of 7B - 65B parameter LLMs trained on open source datasets. Main focus of the improvements is on fast/inexpensive inference. Rather than increasing the model size in number of parameters researchers focused on improving performance by scaling up the dataset size while keeping the model reasonably small. 
 
-Tradeoff between dataset and model size
-LLaMA 7B and 13B param models were trained on 1T tokens. Chinchilla paper (https://arxiv.org/pdf/2203.15556.pdf) evaluated the optimal number of tokens for 10B model to be only ~205B tokens. If the same scaling laws applied to LLaMA training dataset and architecture it means the training budget is not used optimally however there will be better performance at no additional inference costs, which seems to be valuable for large-scale applications.
+### Tradeoff between dataset and model size
+By recommendation from Chinchilla paper (https://arxiv.org/pdf/2203.15556.pdf) the optimal pre-training dataset sizes are:
+- ~205B tokens for 10B parameter model
+- ~1.5T tokens for 67B parameter model
 
-The same cannot be said about the main 65.2B parameter model, which is trained on 1.4T parameters. This one does follow the Chichilla recommendation - for 67B parameter model it’s 1.5T tokens evaluated as optimal. Unfortunately this makes interpreting the evaluation results little difficult in respect to how much is worth to invest into training budget over the Chinchilla recommendation.
+LLaMA is using following number of tokens for pre-training:
+- ~1T tokens for 7B and 13B parameter models
+- ~1.4T for 33B and 65B parameter models
+
+The recommendation was followed for the 65B model but not for 7B and 13B. The intent was to create
+as good performing model as possible with reasonable inference costs, at expense of increased training budget.
 
 ### Training dataset
-Training dataset is mixture of:
+Training dataset is mixture of openly available datasets:
 - CommonCrawl English
 - C4
 - GitHub code
@@ -26,22 +33,33 @@ Training dataset is mixture of:
 - Wikipedia
 - ArXiv
 
-Some preprocessing steps are mentioned for each of them. Dataset is mostly composed of english data, not sure about the multi-lingual capabilities of these models.  
+For each dataset different preprocessing was applied and BPE used for tokenization.
 
 ### Model architecture
-The model is decoder-only (auto-regressive) architecture suitable for text generation. This is not mentioned in the paper but in the model docs: https://github.com/facebookresearch/llama/blob/main/MODEL_CARD.md.  Authors listed improvements over the legacy Transformer as:
-- Pre-normalisation (such as GPT3, normalize input to TF sub-layers not output)
-- SwiGLU activations 
-- RoPE (Rotary positional embeddings, from GPTNeo)
+The model is decoder-only (auto-regressive) architecture based on the original 2017 Transformer.
+The main improvements over the legacy Transformer were:
+- Pre-normalisation - normalize input to transformer sub-layers rather than output
+- SwiGLU activations - trainable gated activation functions
+- Rotary positional embeddings (RoPE) applied at each layer of the network
 
 ### Training
-Optimizer was AdamW. Optimization was done on multi-head attention by not storing attention weights and computing it for masked tokens. Authors also replaced PyTorch AutoGrad with their custom implementation saving expensive activation in combination with sequence parallelism. Training of 65B model took 21 days on 2048x A100 80GB GPUs.
+Optimization was done on multi-head attention by not storing nor computing attention weights for masked tokens. 
+
+Authors have applied optimizations to speed up training:
+- reduced number of activation re-computations by replacing PyTorch AutoGrad with optimized backward pass implementation
+- used xformers multi-head attention which doesn't compute attention for masked tokens
+
+Training of the largerst 65B model took 21 days on 2048x A100 80GB GPUs.
 
 ### Evaluation
-At the time of publication notable opponents of these models were PaLM (8B - 540B) and GPT-3 (175B).  The evaluation seems thorough and many tasks and benchmarks are used. Results are interesting especially in the mid-range model size, where for instance on 5-accuracy MMLU LLaMA 13B outperforms GPT-3 175B by 3 points on average. For some tasks 65B LLaMA model closely matches or even outperforms 540B PaLM model.
+LLaMA was compared to multiple available models such as Chinchilla (70B) PaLM (540B) and GPT-3 (175B).
+Most evaluation focused on 0-shot and few-shot performance on various NLP benchmarks. 
+
+Mid-sized LLaMA 13B outperformed GPT-3 175B by 3 points on average in the 5-shot MMLU accuracy.
+The largest 65B LLaMA model was overall comparable to PaLM (540B) and Chinchilla (70B) models.
 
 ### Conclusion
-Original LLaMA models achieved nice results and mostly contributed by making these models and information on architecture, training techniques and data sources used public.  
+Authors of this paper have proven that publicly available data can be used to train LLMs with performance matching commercial models trained on proprietary data. 
 
 --- 
 
